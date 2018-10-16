@@ -1,0 +1,413 @@
+﻿<Window xmlns:ControlFolder="clr-namespace:animationDemo.ControlFolder"  x:Class="animationDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:animationDemo.assistedWorker"
+        Title="MainWindow" Height="800" Width="1250" ResizeMode="NoResize" WindowState="Maximized" WindowStartupLocation="CenterScreen" WindowStyle="None" Closed="Window_Closed">
+    <Window.Resources>
+        <Style TargetType="local:BackgroundPlayer">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="local:BackgroundPlayer">
+                        <MediaElement x:Name="Media" Stretch="Fill"></MediaElement>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle1" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Path x:Name="path" Data="M100,100 L100,250 142.658,203.647 z" Stretch="Fill" Stroke="Black">
+                                <Path.Fill>
+                                    <ImageBrush ImageSource="/resources/beckhoffImage.png"/>
+                                </Path.Fill>
+                            </Path>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True"
+        						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <!--<Setter Property="Fill" TargetName="path" Value="#FF43A873"/>-->
+                                <Setter Property="Stroke" TargetName="path" Value="#FFBFD132"/>
+                                <Setter Property="StrokeThickness" TargetName="path" Value="3"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle2" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Path x:Name="path" Data="M100,100 L100,250 -42.66,203.647 z" Stretch="Fill" Stroke="Black">
+                                <Path.Fill>
+                                    <ImageBrush ImageSource="/resources/RexrothImage.png"/>
+                                </Path.Fill>
+                            </Path>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True"
+        						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Stroke" TargetName="path" Value="#FFBFD132"/>
+                                <Setter Property="StrokeThickness" TargetName="path" Value="3"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle3" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Path x:Name="path" Data="M100,100 L276.3356,100 188.1678,-21.35 z" Stretch="Fill" Stroke="Black">
+                                <Path.Fill>
+                                    <ImageBrush ImageSource="/resources/PFImage.png"/>
+                                </Path.Fill>
+                            </Path>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True"
+        						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Stroke" TargetName="path" Value="#FFBFD132"/>
+                                <Setter Property="StrokeThickness" TargetName="path" Value="3"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle4" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Path x:Name="path" Data="M100,100 L11.8372,221.35 -42.66,53.647 z" Stretch="Fill" Stroke="Black">
+                                <Path.Fill>
+                                    <ImageBrush ImageSource="/resources/SiemensImage.png"/>
+                                </Path.Fill>
+                            </Path>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True"
+        						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Stroke" TargetName="path" Value="#FFBFD132"/>
+                                <Setter Property="StrokeThickness" TargetName="path" Value="3"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle5" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Path x:Name="path" Data="M100,100 L188.1678,221.35 242.66,53.647 z" Stretch="Fill" Stroke="Black">
+                                <Path.Fill>
+                                    <ImageBrush ImageSource="/resources/UniversalRobot.png"/>
+                                </Path.Fill>
+                            </Path>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True"
+        						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Stroke" TargetName="path" Value="#FFBFD132"/>
+                                <Setter Property="StrokeThickness" TargetName="path" Value="3"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ButtonStyle6" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Path x:Name="path" Data="M100,100 A100,360 360 1 1 100,50 z" Stretch="Fill" Stroke="Black">
+                                <Path.Fill>
+                                    <ImageBrush ImageSource="/resources/CtrImage.png"/>
+                                </Path.Fill>
+                            </Path>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" RecognizesAccessKey="True"
+        						SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalAlignment}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsFocused" Value="True"/>
+                            <Trigger Property="IsDefaulted" Value="True"/>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Stroke" TargetName="path" Value="#FFBFD132"/>
+                                <Setter Property="StrokeThickness" TargetName="path" Value="3"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True"/>
+                            <Trigger Property="IsEnabled" Value="False"/>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Storyboard x:Key="initAfterClick" >
+            <!--<DoubleAnimation x:Name="moveRexrothAnimation"
+                             Storyboard.TargetName="moveRexroth"
+                             Storyboard.TargetProperty="X"
+                             From="0" To="2000"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>-->
+            <DoubleAnimation x:Name="moveRexrothAnimation"
+                             Storyboard.TargetName="moveRexroth"
+                             Storyboard.TargetProperty="X"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="moveBeckhoff"
+                             Storyboard.TargetProperty="X"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="movePFButton"
+                             Storyboard.TargetProperty="X"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="moveSiemenseButton"
+                             Storyboard.TargetProperty="X"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="moveUniversalButton"
+                             Storyboard.TargetProperty="X"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            
+            <!--<DoubleAnimation Storyboard.TargetName="moveRexroth"
+                             Storyboard.TargetProperty="Y"
+                             From="0" To="-1200"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>-->
+            <DoubleAnimation Storyboard.TargetName="moveRexroth"
+                             Storyboard.TargetProperty="Y"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="moveBeckhoff"
+                             Storyboard.TargetProperty="Y"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="movePFButton"
+                             Storyboard.TargetProperty="Y"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="moveSiemenseButton"
+                             Storyboard.TargetProperty="Y"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="moveUniversalButton"
+                             Storyboard.TargetProperty="Y"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            
+            <!--<DoubleAnimation Storyboard.TargetName="zoomRexroth"
+                             Storyboard.TargetProperty="ScaleX"
+                             From="1" To="0.3"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>-->
+            <DoubleAnimation Storyboard.TargetName="zoomRexroth"
+                             Storyboard.TargetProperty="ScaleX"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="zoomRexroth"
+                             Storyboard.TargetProperty="ScaleY"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="zoomBeckhoff"
+                             Storyboard.TargetProperty="ScaleX"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="zoomBeckhoff"
+                             Storyboard.TargetProperty="ScaleY"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="zoomPFButton"
+                             Storyboard.TargetProperty="ScaleX"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="zoomPFButton"
+                             Storyboard.TargetProperty="ScaleY"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="zoomSiemenseButton"
+                             Storyboard.TargetProperty="ScaleX"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="zoomSiemenseButton"
+                             Storyboard.TargetProperty="ScaleY"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="zoomUniversalButton"
+                             Storyboard.TargetProperty="ScaleX"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="zoomUniversalButton"
+                             Storyboard.TargetProperty="ScaleY"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="moveControlButton"
+                             Storyboard.TargetProperty="X"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="moveControlButton"
+                             Storyboard.TargetProperty="Y"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="zoomControlButton"
+                             Storyboard.TargetProperty="ScaleX"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+            <DoubleAnimation Storyboard.TargetName="zoomControlButton"
+                             Storyboard.TargetProperty="ScaleY"
+                             BeginTime="00:00:00"
+                             Duration="00:00:01">
+            </DoubleAnimation>
+        </Storyboard>
+    </Window.Resources>
+    <Grid x:Name="Grid1" Margin="0,0,0,0">
+        <Grid.Background>
+            <VisualBrush>
+                <VisualBrush.Visual>
+                    <local:BackgroundPlayer Source="D:/workspace/animationDemo/animationDemo/resources/1.mp4"></local:BackgroundPlayer>
+                </VisualBrush.Visual>
+            </VisualBrush>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="exitButton"  HorizontalAlignment="Right" VerticalAlignment="Top" Width="30" Height="30" Click="exitButton_Click">
+            <Image Source="/resources/close.png" Height="25" Width="25" ToolTip="关闭程序"/>
+        </Button>
+        <Grid x:Name="up">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50*"/>
+                <ColumnDefinition Width="50*"/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="upLeftContent" Grid.Column="0">
+                <Button x:Name="rexrothButton" Content="" HorizontalAlignment="Right" Height="300" Margin="120,40,0,0" Style="{DynamicResource ButtonStyle2}" VerticalAlignment="Bottom" Width="286" Click="rexrothButton_Click">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform x:Name="moveRexroth"></TranslateTransform>
+                            <ScaleTransform x:Name="zoomRexroth"></ScaleTransform>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+            <Grid x:Name="upRightContent" Grid.Column="1">
+                <Button x:Name="beckhoffButton" Content="" HorizontalAlignment="Left" Height="300" Margin="0,40,0,0" Style="{DynamicResource ButtonStyle1}" VerticalAlignment="Bottom" Width="286" Click="beckhoffButton_Click">
+                    <Button.RenderTransform>
+                        <TransformGroup>
+                            <TranslateTransform x:Name="moveBeckhoff"></TranslateTransform>
+                            <ScaleTransform x:Name="zoomBeckhoff"></ScaleTransform>
+                        </TransformGroup>
+                    </Button.RenderTransform>
+                </Button>
+            </Grid>
+        </Grid>
+        <Grid x:Name="down" Grid.Row="1">
+            <Label Content="©2018 中国航空制造技术研究院 工业网络与自动化实验室. All rights reserved." HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,350,0,0"  Foreground="White"></Label>
+            <Button x:Name="PFButton" Content="" HorizontalAlignment="Center" Height="242" Margin="0,0,0,0" Style="{DynamicResource ButtonStyle3}" VerticalAlignment="Top" Width="354" Click="PFButton_Click">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <TranslateTransform x:Name="movePFButton"></TranslateTransform>
+                        <ScaleTransform x:Name="zoomPFButton"></ScaleTransform>
+                    </TransformGroup>
+                </Button.RenderTransform>
+            </Button>
+            <Grid x:Name="downSplitter">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="50*"/>
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="downLeftContent" Grid.Column="0">
+                    <Button x:Name="SiemenseButton" Content="" HorizontalAlignment="Right" Height="334" Margin="-21,-92.7,0,-67" Style="{DynamicResource ButtonStyle4}" VerticalAlignment="Top" Width="283" Click="SiemenseButton_Click">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform x:Name="moveSiemenseButton"></TranslateTransform>
+                                <ScaleTransform x:Name="zoomSiemenseButton"></ScaleTransform>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
+                </Grid>
+                <Grid x:Name="downRightContent" Grid.Column="1">
+                    <Button x:Name="UniversalButton" Content="" HorizontalAlignment="Left" Height="334" Margin="0,-92,0,0" Style="{DynamicResource ButtonStyle5}" VerticalAlignment="Top" Width="283" Click="UniversalButton_Click">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <TranslateTransform x:Name="moveUniversalButton"></TranslateTransform>
+                                <ScaleTransform x:Name="zoomUniversalButton"></ScaleTransform>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
+
+                </Grid>
+            </Grid>
+        </Grid>
+        <Button x:Name="controlButton" Content="" HorizontalAlignment="Center" Height="100"  Style="{DynamicResource ButtonStyle6}" VerticalAlignment="Center" Width="100" Click="ControlButton_Click" Grid.RowSpan="2">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <TranslateTransform x:Name="moveControlButton"/>
+                    <ScaleTransform x:Name="zoomControlButton"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        
+    </Grid>
+</Window>

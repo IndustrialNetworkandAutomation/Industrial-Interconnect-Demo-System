@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<rtde_config>
+     <Group key="In">
+		<field name="standard_digital_output_mask"/>
+        <field name="speed_slider_mask"/>
+        <field name="speed_slider_fraction"/>
+		<field name="standard_digital_output"/>
+		<field name="input_int_register_22"/>
+		<field name="input_int_register_23"/>
+		<field name="input_double_register_0"/>
+		<field name="input_double_register_1"/>
+		<field name="input_double_register_2"/>
+		<field name="input_double_register_3"/>
+		<field name="input_double_register_4"/>
+		<field name="input_double_register_5"/>
+	</Group>
+	<Group key="Out">
+	  <field name="joint_control_output"/>
+      <field name="elbow_position"/>
+	  <field name="actual_q"/>
+	  <field name="robot_mode"/>
+	  <field name="actual_TCP_pose"/>
+	  <field name="output_int_register_22"/>
+	  <field name="output_int_register_23"/>
+	  
+	</Group>
+	<!--
+	<Group key="Out">
+	    <field name="standard_analog_input0" type="DOUBLE"/>
+		<field name="target" type="VECTOR6D"/>
+	</Group>
+	-->
+</rtde_config>

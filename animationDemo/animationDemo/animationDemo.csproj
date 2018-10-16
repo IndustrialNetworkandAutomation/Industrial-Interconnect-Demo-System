@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{189B8E9F-B85F-44FE-8607-1E4A95EADED9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>animationDemo</RootNamespace>
+    <AssemblyName>animationDemo</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="M2Mqtt.Net">
+      <HintPath>resources\M2Mqtt.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics, Version=3.13.1.0, Culture=neutral, PublicKeyToken=3e35f7988a6747fb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>resources\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="Opc.Ua.Client, Version=1.0.238.1, Culture=neutral, PublicKeyToken=22186a540fc0b044, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>resources\Opc.Ua.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Opc.Ua.Core, Version=1.0.238.1, Culture=neutral, PublicKeyToken=22186a540fc0b044, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>resources\Opc.Ua.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="URSDK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=3e35f7988a6747fb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>resources\URSDK.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="ControlFolder\agvControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlFolder\controlMain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlFolder\inspectControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlFolder\IOControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlFolder\logisticsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlFolder\motorControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlFolder\pneumaticControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlFolder\robotControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ControlFolder\uavControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisplayFolder\BeckhoffDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisplayFolder\PFDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisplayFolder\RexrothDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisplayFolder\RobotDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DisplayFolder\SiemensDisplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="assistedWorker\BackgroundWorker.cs" />
+    <Compile Include="ControlFolder\agvControl.xaml.cs">
+      <DependentUpon>agvControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlFolder\controlMain.xaml.cs">
+      <DependentUpon>controlMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlFolder\inspectControl.xaml.cs">
+      <DependentUpon>inspectControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlFolder\IOControl.xaml.cs">
+      <DependentUpon>IOControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlFolder\logisticsControl.xaml.cs">
+      <DependentUpon>logisticsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlFolder\motorControl.xaml.cs">
+      <DependentUpon>motorControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlFolder\pneumaticControl.xaml.cs">
+      <DependentUpon>pneumaticControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlFolder\robotControl.xaml.cs">
+      <DependentUpon>robotControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ControlFolder\uavControl.xaml.cs">
+      <DependentUpon>uavControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataFolder\dataGridData.cs" />
+    <Compile Include="DataFolder\inspectData.cs" />
+    <Compile Include="DataFolder\IOData.cs" />
+    <Compile Include="DataFolder\logisticData.cs" />
+    <Compile Include="DataFolder\motorPos.cs" />
+    <Compile Include="DataFolder\pneumaticData.cs" />
+    <Compile Include="DataFolder\robotData.cs" />
+    <Compile Include="DataFolder\robotinoData.cs" />
+    <Compile Include="DataFolder\uavData.cs" />
+    <Compile Include="DisplayFolder\BeckhoffDisplay.xaml.cs">
+      <DependentUpon>BeckhoffDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayFolder\PFDisplay.xaml.cs">
+      <DependentUpon>PFDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayFolder\RexrothDisplay.xaml.cs">
+      <DependentUpon>RexrothDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayFolder\RobotDisplay.xaml.cs">
+      <DependentUpon>RobotDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DisplayFolder\SiemensDisplay.xaml.cs">
+      <DependentUpon>SiemensDisplay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="opcRelated\ClientSubscriptions.cs" />
+    <Compile Include="opcRelated\opcUAServer.cs" />
+    <Compile Include="opcRelated\opcUA_Helper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\beckhoffImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\RexrothImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\PFImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\close.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\SiemensImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\UniversalRobot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\CtrImage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\ServoMachine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\Robot.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\Inspect.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\PneumaticSystem.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\Logistics.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\IO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\xAxis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\yAxis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\addIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\reduceIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\LArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="resources\RArrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="dataRelated\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\1.mp4" />
+    <Content Include="resources\URSDK.dll" />
+    <Resource Include="resources\rollBackward.png" />
+    <Resource Include="resources\rollRight.png" />
+    <Resource Include="resources\rollLeft.png" />
+    <Resource Include="resources\rollForward.png" />
+    <Resource Include="resources\up.png" />
+    <Resource Include="resources\takeoff.png" />
+    <Resource Include="resources\UAV.png" />
+    <Resource Include="resources\stop.png" />
+    <Resource Include="resources\right.png" />
+    <Resource Include="resources\agv.png" />
+    <Resource Include="resources\forward.png" />
+    <Resource Include="resources\left.png" />
+    <Resource Include="resources\antiClock.png" />
+    <Resource Include="resources\clock.png" />
+    <Resource Include="resources\backward.png" />
+    <Resource Include="resources\land.png" />
+    <Resource Include="resources\down.png" />
+    <Content Include="resources\MathNet.Numerics.dll" />
+    <Content Include="resources\Opc.Ua.Client.dll" />
+    <Content Include="resources\Opc.Ua.Core.dll" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,153 @@
+﻿<UserControl x:Class="animationDemo.ControlFolder.uavControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="660" d:DesignWidth="900">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Label Content="系统控制交互界面" HorizontalAlignment="Center" FontFamily="微软雅黑" FontSize="50" Foreground="White"/>
+        </Grid >
+        <Grid Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="300"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label x:Name="label1" Content="基础动作" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <WrapPanel Margin="0,0,0,0" Orientation="Horizontal" ItemHeight="150" ItemWidth="100" VerticalAlignment="Center">
+                            <Button x:Name="takeoffButton" Height="90" Width="90" Margin="0,0,0,0" Click="takeoffButton_Click">
+                                <Image Source="..\resources\takeoff.png" Height="85" Width="85" ToolTip="起飞命令"/>
+                            </Button>
+                            <Button x:Name="forwardButton" Height="90" Width="90" Margin="0,0,0,0" Click="forwardButton_Click" >
+                                <Image Source="..\resources\forward.png" Height="85" Width="85" ToolTip="前进命令"/>
+                            </Button>
+                            <Button x:Name="landButton" Height="90" Width="90" Margin="0,0,0,0" Click="landButton_Click" >
+                                <Image Source="..\resources\land.png" Height="85" Width="85" ToolTip="降落命令"/>
+                            </Button>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <WrapPanel Margin="0,0,0,0" Orientation="Horizontal" ItemHeight="150" ItemWidth="100" VerticalAlignment="Center">
+                            <Button x:Name="leftButton" Height="90" Width="90" Margin="0,0,0,0" Click="leftButton_Click">
+                                <Image Source="..\resources\left.png" Height="85" Width="85" ToolTip="控制加速"/>
+                            </Button>
+                            <Button x:Name="defaultButton" Height="90" Width="90" Margin="0,0,0,0">
+                                
+                            </Button>
+                            <Button x:Name="rightButton" Height="90" Width="90" Margin="0,0,0,0" Click="rightButton_Click">
+                                <Image Source="..\resources\right.png" Height="85" Width="85" ToolTip="控制减速"/>
+                            </Button>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <WrapPanel Margin="0,0,0,0" Orientation="Horizontal" ItemHeight="150" ItemWidth="100" VerticalAlignment="Center">
+                            <Button x:Name="moveUpButton" Height="90" Width="90" Margin="0,0,0,0" Click="moveUpButton_Click">
+                                <Image Source="..\resources\up.png" Height="85" Width="85" ToolTip="上升命令"/>
+                            </Button>
+                            <Button x:Name="backwardButton" Height="90" Width="90" Margin="0,0,0,0" Click="backwardButton_Click">
+                                <Image Source="..\resources\backward.png" Height="85" Width="85" ToolTip="后退命令"/>
+                            </Button>
+                            <Button x:Name="moveDownClockButton" Height="90" Width="90" Margin="0,0,0,0" Click="moveDownClockButton_Click">
+                                <Image Source="..\resources\down.png" Height="85" Width="85" ToolTip="下降命令"/>
+                            </Button>
+                        </WrapPanel>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="112.5"/>
+                        <RowDefinition Height="112.5"/>
+                        <RowDefinition Height="112.5"/>
+                        <RowDefinition Height="112.5"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label x:Name="label2" Content="UAV无人机" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Foreground="White"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Label Content="电量:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                        <TextBox x:Name="batteryValue" HorizontalAlignment="Left" Height="32" Margin="80,0,0,0" TextWrapping="Wrap" Text="{Binding Path=battery}" VerticalAlignment="Center" Width="150" FontSize="25" />
+                        <!--<Label Content="mm" HorizontalAlignment="Left" Margin="230,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>-->
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Label Content="速度:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                        <TextBox x:Name="vValue" HorizontalAlignment="Left" Height="32" Margin="80,0,0,0" TextWrapping="Wrap" Text="{Binding Path=velocity}" VerticalAlignment="Center" Width="150" FontSize="25"/>
+                        <!--<Label Content="mm" HorizontalAlignment="Left" Margin="230,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>-->
+                    </Grid>
+                   
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="150"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label x:Name="label3" Content="复杂动作" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <WrapPanel Margin="0,0,0,0" Orientation="Horizontal" ItemHeight="150" ItemWidth="100" VerticalAlignment="Center">
+                            <Button x:Name="speedUpButton" Height="90" Width="90" Margin="0,0,0,0" Click="speedUpButton_Click">
+                                <Image Source="..\resources\addIcon.png" Height="85" Width="85" ToolTip="控制加速"/>
+                            </Button>
+                            <Button x:Name="rollForwardButton" Height="90" Width="90" Margin="0,0,0,0" Click="rollForwardButton_Click">
+                                <Image Source="..\resources\rollforward.png" Height="85" Width="85" ToolTip="控制前进"/>
+                            </Button>
+                            <Button x:Name="speedDownButton" Height="90" Width="90" Margin="0,0,0,0" Click="speedDownButton_Click">
+                                <Image Source="..\resources\reduceIcon.png" Height="85" Width="85" ToolTip="控制减速"/>
+                            </Button>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <WrapPanel Margin="0,0,0,0" Orientation="Horizontal" ItemHeight="150" ItemWidth="100" VerticalAlignment="Center">
+                            <Button x:Name="rollLeftButton" Height="90" Width="90" Margin="0,0,0,0" Click="rollLeftButton_Click">
+                                <Image Source="..\resources\rollLeft.png" Height="85" Width="85" ToolTip="控制加速"/>
+                            </Button>
+                            <Button x:Name="blankButton" Height="90" Width="90" Margin="0,0,0,0">
+
+                            </Button>
+                            <Button x:Name="rollRightButton" Height="90" Width="90" Margin="0,0,0,0" Click="rollRightButton_Click">
+                                <Image Source="..\resources\rollRight.png" Height="85" Width="85" ToolTip="控制减速"/>
+                            </Button>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Row="3">
+                        <WrapPanel Margin="0,0,0,0" Orientation="Horizontal" ItemHeight="150" ItemWidth="100" VerticalAlignment="Center">
+                            <Button x:Name="clockButton" Height="90" Width="90" Margin="0,0,0,0" Click="clockButton_Click">
+                                <Image Source="..\resources\clock.png" Height="85" Width="85" ToolTip="控制加速"/>
+                            </Button>
+                            <Button x:Name="rollBackwardButton" Height="90" Width="90" Margin="0,0,0,0" Click="rollBackwardButton_Click">
+                                <Image Source="..\resources\rollBackward.png" Height="85" Width="85" ToolTip="控制前进"/>
+                            </Button>
+                            <Button x:Name="antiClockButton" Height="90" Width="90" Margin="0,0,0,0" Click="antiClockButton_Click">
+                                <Image Source="..\resources\antiClock.png" Height="85" Width="85" ToolTip="控制减速"/>
+                            </Button>
+                        </WrapPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid >
+        <Grid Grid.Row="2">
+            <Label x:Name="timeLabel" Content="时间：" HorizontalAlignment="Right" Height="120" VerticalAlignment="Top" FontSize="30" Foreground="White"/>
+        </Grid>
+    </Grid>
+</UserControl>

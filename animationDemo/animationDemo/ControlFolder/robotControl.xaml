@@ -1,0 +1,152 @@
+﻿<UserControl x:Class="animationDemo.ControlFolder.robotControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="660" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Label Content="系统控制交互界面" HorizontalAlignment="Center" FontFamily="微软雅黑" FontSize="50" Foreground="White"/>
+        </Grid >
+        <Grid Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition Width="300"/>
+                    <ColumnDefinition Width="250"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="200"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label x:Name="label1" Content="手动控制" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <WrapPanel Margin="0,0,0,0" Orientation="Horizontal" ItemHeight="100" ItemWidth="80" VerticalAlignment="Center" Height="200">
+                            <Button x:Name="a1AxisButton" Height="70" Width="70" Margin="10,20,0,0" Content="A1" FontSize="44" Click="a1AxisButton_Click"/>
+                            <Button x:Name="a2AxisButton" Height="70" Width="70" Margin="10,20,0,0" Content="A2" FontSize="44" Click="a2AxisButton_Click"/>
+                            <Button x:Name="a3AxisButton" Height="70" Width="70" Margin="10,20,0,0" Content="A3" FontSize="44" Click="a3AxisButton_Click"/>
+                            <Button x:Name="a4AxisButton" Height="70" Width="70" Margin="10,20,0,0" Content="A4" FontSize="44" Click="a4AxisButton_Click"/>
+                            <Button x:Name="a5AxisButton" Height="70" Width="70" Margin="10,20,0,0" Content="A5" FontSize="44" Click="a5AxisButton_Click"/>
+                            <Button x:Name="a6AxisButton" Height="70" Width="70" Margin="10,20,0,0" Content="A6" FontSize="44" Click="a6AxisButton_Click"/>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <WrapPanel Margin="0,0,0,0" Orientation="Horizontal" ItemHeight="105" ItemWidth="125" VerticalAlignment="Center">
+                            <Button x:Name="fixtureButton" Height="70" Width="110" Margin="5,20,0,0" Content="卡具" FontSize="44" Click="fixtureButton_Click"/>
+                            <Button x:Name="pawButton" Height="70" Width="110" Margin="0,20,0,0" Content="手爪" FontSize="44" Click="pawButton_Click"/>
+                            <RepeatButton  x:Name="addButton" Height="75" Width="75" Margin="0,0,0,0" Click="addButton_Click" Interval="100">
+                                <Image Source="..\resources\addIcon.png" Height="75" Width="75" ToolTip="增加"/>
+                            </RepeatButton>
+                            <RepeatButton  x:Name="reduceButton" Height="75" Width="75" Margin="0,0,0,0" Interval="100" Click="reduceButton_Click">
+                                <Image Source="..\resources\reduceIcon.png" Height="75" Width="75" ToolTip="减少"/>
+                            </RepeatButton>
+                        </WrapPanel>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="300"/>
+                        <RowDefinition Height="100"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label x:Name="label2" Content="协作机器人" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30" Foreground="White"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="0">
+                                <Label Content="A1:" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                                <TextBox x:Name="a1Value" HorizontalAlignment="Left" Height="32" Margin="80,0,0,0" TextWrapping="Wrap" Text="{Binding Path=a1Value}" VerticalAlignment="Center" Width="150" FontSize="25" TextAlignment="Right" />
+                                <Label Content="°" HorizontalAlignment="Left" Margin="230,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                            </Grid>
+                            <Grid Grid.Row="1">
+                                <Label Content="A2:" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                                <TextBox x:Name="a2Value" HorizontalAlignment="Left" Height="32" Margin="80,0,0,0" TextWrapping="Wrap" Text="{Binding Path=a2Value}" VerticalAlignment="Center" Width="150" FontSize="25" TextAlignment="Right" />
+                                <Label Content="°" HorizontalAlignment="Left" Margin="230,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                            </Grid>
+                            <Grid Grid.Row="2">
+                                <Label Content="A3:" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                                <TextBox x:Name="a3Value" HorizontalAlignment="Left" Height="32" Margin="80,0,0,0" TextWrapping="Wrap" Text="{Binding Path=a3Value}" VerticalAlignment="Center" Width="150" FontSize="25" TextAlignment="Right" />
+                                <Label Content="°" HorizontalAlignment="Left" Margin="230,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                            </Grid>
+                            <Grid Grid.Row="3">
+                                <Label Content="A4:" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                                <TextBox x:Name="a4Value" HorizontalAlignment="Left" Height="32" Margin="80,0,0,0" TextWrapping="Wrap" Text="{Binding Path=a4Value}" VerticalAlignment="Center" Width="150" FontSize="25" TextAlignment="Right" />
+                                <Label Content="°" HorizontalAlignment="Left" Margin="230,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                            </Grid>
+                            <Grid Grid.Row="4">
+                                <Label Content="A5:" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                                <TextBox x:Name="a5Value" HorizontalAlignment="Left" Height="32" Margin="80,0,0,0" TextWrapping="Wrap" Text="{Binding Path=a5Value}" VerticalAlignment="Center" Width="150" FontSize="25" TextAlignment="Right" />
+                                <Label Content="°" HorizontalAlignment="Left" Margin="230,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                            </Grid>
+                            <Grid Grid.Row="5">
+                                <Label Content="A6:" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                                <TextBox x:Name="a6Value" HorizontalAlignment="Left" Height="32" Margin="80,0,0,0" TextWrapping="Wrap" Text="{Binding Path=a6Value}" VerticalAlignment="Center" Width="150" FontSize="25" TextAlignment="Right" />
+                                <Label Content="°" HorizontalAlignment="Left" Margin="230,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Label Content="卡具:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                            <ProgressBar x:Name="fixtureProgress" HorizontalAlignment="Left" Height="32" Margin="80,0,0,0" Width="150" Value="{Binding Path=fixtureProgress}" Maximum="100" Minimum="0"/>
+                            <!--<TextBox x:Name="my1Value" HorizontalAlignment="Left" Height="32" Margin="80,0,0,0" TextWrapping="Wrap" Text="{Binding Path=YValue}" VerticalAlignment="Center" Width="150" FontSize="25"/>
+                            <Label Content="mm" HorizontalAlignment="Left" Margin="230,0,0,0" VerticalAlignment="Center" FontSize="25"/>-->
+                        </Grid>
+                        <Grid Grid.Row="1">
+                            <Label Content="手爪:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                            <ProgressBar x:Name="pawProgress" HorizontalAlignment="Left" Height="32" Margin="80,0,0,0" Width="150" Value="{Binding Path=pawProgress}" Maximum="100" Minimum="0"/>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="100"/>
+                        <RowDefinition Height="200"/>
+                        <RowDefinition Height="200"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Label x:Name="label3" Content="自动控制" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <WrapPanel Margin="0,0,0,0" Orientation="Horizontal" ItemHeight="105" ItemWidth="250" VerticalAlignment="Center">
+                            <Button x:Name="startButton" Content="START" Height="105" Width="200" Margin="0,0,0,0" FontSize="30" Click="startButton_Click">
+                            </Button>
+                        </WrapPanel>
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <WrapPanel Margin="0,0,0,0" Orientation="Horizontal" ItemHeight="105" ItemWidth="250" VerticalAlignment="Center">
+                            <Button x:Name="stopButton" Content="STOP" Height="105" Width="200" Margin="0,0,0,0" FontSize="30" Click="stopButton_Click">
+                            </Button>
+                        </WrapPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid >
+        <Grid Grid.Row="2">
+            <Label x:Name="timeLabel" Content="时间：" HorizontalAlignment="Right" Height="120" VerticalAlignment="Top" FontSize="30" Foreground="White"/>
+        </Grid>
+    </Grid>
+</UserControl>

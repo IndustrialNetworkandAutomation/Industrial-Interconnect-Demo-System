@@ -1,0 +1,49 @@
+﻿<UserControl x:Class="animationDemo.ControlFolder.controlMain"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="660" d:DesignWidth="1000">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="500"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Label Content="系统控制交互界面" HorizontalAlignment="Center" FontFamily="微软雅黑" FontSize="50" Foreground="White"/>
+        </Grid >
+        <Grid Grid.Row="1">
+            <WrapPanel Margin="0,0,0,0" Orientation="Horizontal" ItemHeight="240" ItemWidth="240">
+                <Button x:Name="ServoMotorButton" Height="210" Width="210" Margin="40,40,0,0" Click="ServoMotorButton_Click">
+                    <Image Source="..\resources\ServoMachine.png" Height="200" Width="200" ToolTip="控制伺服电机"/>
+                </Button>
+                <Button x:Name="RobotButton" Height="210" Width="210" Margin="40,40,0,0" Click="RobotButton_Click">
+                    <Image Source="..\resources\Robot.png" Height="200" Width="200" ToolTip="控制工业机器人"/>
+                </Button>
+                <Button x:Name="InspectButton" Height="210" Width="210" Margin="40,40,0,0" Click="InspectButton_Click">
+                    <Image Source="..\resources\Inspect.png" Height="200" Width="200" ToolTip="控制检测设备"/>
+                </Button>
+                <Button x:Name="agvButton" Height="210" Width="210" Margin="40,40,0,0" Click="agvButton_Click">
+                    <Image Source="..\resources\agv.png" Height="200" Width="200" ToolTip="控制AGV机器人"/>
+                </Button>
+                <Button x:Name="PneumaticButton" Height="210" Width="210" Margin="40,40,0,0" Click="PneumaticButton_Click">
+                    <Image Source="..\resources\PneumaticSystem.png" Height="200" Width="200" ToolTip="控制气动系统"/>
+                </Button>
+                <Button x:Name="LogisticsButton" Height="210" Width="210" Margin="40,40,0,0" Click="LogisticsButton_Click">
+                    <Image Source="..\resources\Logistics.png" Height="200" Width="200" ToolTip="控制物流传送"/>
+                </Button>
+                <Button x:Name="IOButton" Height="210" Width="210" Margin="40,40,0,0" Click="IOButton_Click">
+                    <Image Source="..\resources\IO.png" Height="200" Width="200" ToolTip="控制辅助IO"/>
+                </Button>
+                <Button x:Name="UAVButton" Height="210" Width="210" Margin="40,40,0,0" Click="UAVButton_Click" >
+                    <Image Source="..\resources\UAV.png" Height="200" Width="200" ToolTip="控制无人机"/>
+                </Button>
+            </WrapPanel>
+        </Grid >
+        <Grid Grid.Row="2">
+            <Label x:Name="timeLabel" Content="时间：" HorizontalAlignment="Right" Height="120" VerticalAlignment="Top" FontSize="30" Foreground="White"/>
+        </Grid>
+    </Grid>
+</UserControl>

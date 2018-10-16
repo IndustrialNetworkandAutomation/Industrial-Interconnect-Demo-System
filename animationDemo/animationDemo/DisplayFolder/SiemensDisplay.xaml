@@ -1,0 +1,96 @@
+﻿<UserControl x:Class="animationDemo.DisplayFolder.SiemensDisplay"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="660" d:DesignWidth="900">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="610"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Label x:Name="label0" Content="西门子系统状态及数据显示" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="28" Foreground="White"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="560"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row = "0">
+                    <Label x:Name="label1" Content="数字输入" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                </Grid>
+                <Grid Grid.Row = "1">
+                    <DataGrid x:Name="inputData" Margin="0,0,0,0" CanUserAddRows="False" ItemsSource="{Binding}" AutoGenerateColumns="False" RowHeight="30" ColumnHeaderHeight="35" FontSize="18">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="FontSize" Value="20"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center">
+                                </Setter>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="150" Header="变量名" Binding="{Binding varName}" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="150" Header="变量值" Binding="{Binding varValue}" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="560"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row = "0">
+                    <Label x:Name="label2" Content="数字输出" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                </Grid>
+                <Grid Grid.Row = "1">
+                    <DataGrid x:Name="outputData" Margin="0,0,0,0" CanUserAddRows="False" ItemsSource="{Binding}" AutoGenerateColumns="False" RowHeight="30" ColumnHeaderHeight="35" FontSize="18">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="FontSize" Value="20"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center">
+                                </Setter>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="150" Header="变量名" Binding="{Binding varName}" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="150" Header="变量值" Binding="{Binding varValue}" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="560"/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row = "0">
+                    <Label x:Name="label3" Content="其他" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25" Foreground="White"/>
+                </Grid>
+                <Grid Grid.Row = "1">
+                    <DataGrid x:Name="othersData" Margin="0,0,0,0" CanUserAddRows="False" ItemsSource="{Binding}" AutoGenerateColumns="False" RowHeight="30" ColumnHeaderHeight="35" FontSize="18">
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="FontSize" Value="20"/>
+                                <Setter Property="HorizontalContentAlignment" Value="Center">
+                                </Setter>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Width="150" Header="变量名" Binding="{Binding varName}" IsReadOnly="True"/>
+                            <DataGridTextColumn Width="150" Header="变量值" Binding="{Binding varValue}" IsReadOnly="True"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>
